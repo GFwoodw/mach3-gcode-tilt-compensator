@@ -107,7 +107,6 @@ Sin red, sin `pip`, sin Wine.
 └── README.md / README.es.md
 ```
 
-Los archivos reales de trabajo se omiten (trabajo privado). Crea un G-code pequeño de prueba para el primer uso.
 
 ## Licencia
 
