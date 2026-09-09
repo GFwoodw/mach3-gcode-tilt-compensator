@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+.env
+
+# Compensated outputs (generated)
+*_COMPENSADO.txt
+*_COMPENSATED.txt
+*_COMPENSADO.gcode
+*_COMPENSADO.tap
+*_COMPENSADO.nc
+*_COMPENSATED.gcode
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Keep examples but ignore real jobs
+# Uncomment to ignore large gcode jobs
+# *.txt
+# !examples/*.gcode
