@@ -107,7 +107,6 @@ No network, no `pip`, no Wine.
 └── README.md / README.es.md
 ```
 
-Real job files are omitted (private work). Create a small test G-code for your first run.
 
 ## License
 
