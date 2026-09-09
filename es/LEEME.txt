@@ -1,77 +1,49 @@
-COMPENSADOR CNC - INSTRUCCIONES PENDRIVE (Ubuntu -> XP sin internet)
+COMPENSADOR CNC - INSTRUCCIONES (Ubuntu / Windows XP sin internet)
 ===================================================================
 
-QUE HAY EN ESTA CARPETA:
+CONTENIDO DE ESTA CARPETA:
 - compensador.py        -> nucleo 
-- compensador_gui.py    -> programa con ventana (doble-click)
-- example.txt            -> ejemplos G-code Vectric/Mach3
+- compensador_gui.py    -> interfaz gráfica (doble-click)
+- example.txt           -> G-code de ejemplo genérico
 - LEEME.txt             -> este archivo
 
 -------------------------------------------------------------------
-A) EN UBUNTU 
+A) EN UBUNTU / LINUX
 -------------------------------------------------------------------
-1. Instalar Tkinter si no esta:
+1. Instalar Tkinter si falta:
    sudo apt update && sudo apt install python3-tk -y
 
 2. Ejecutar:
    python3 compensador_gui.py
-   (o doble-click en el archivo -> Abrir con Python)
 
 3. Uso:
-   - [Examinar...] elige tu archivo G-code (.txt .tap .nc)
-   - En el area de puntos pega las mediciones, una por linea:
-        -300.030 -20.010 0.000
-        -25.080  -20.010 0.690
-        -41.760 -164.280 0.810
-     Acepta: espacios, comas, punto y coma. Decimales con punto o coma.
-     Minimo 3 puntos, cuantos quieras y en el orden que quieras.
+   - [Examinar...] selecciona tu archivo G-code (.txt solo)
+   - Pulsa "Agregar punto" y rellena X  Y  Z por fila:
+        X [0.000]     Y [0.000]    Z [0.000]
+        X [100.000]   Y [0.000]    Z [0.120]
+     Minimo 3 puntos, 4-7 recomendados. Usa punto o coma.
    - Pulsa COMPENSAR
-   - Se genera en la misma carpeta:  archivo_COMPENSADO.txt
-   - Ese es el que cargas en Mach3.
+   - Se crea archivo_COMPENSADO.txt en la misma carpeta.
 
 -------------------------------------------------------------------
-B) EN WINDOWS XP (Pentium 4 sin internet) - 
+B) EN WINDOWS XP (sin internet)
 -------------------------------------------------------------------
-Necesitas instalar Python UNA SOLA VEZ via pendrive.
+1. En PC con internet descarga python-3.4.4.msi (20MB) de python.org al pendrive.
+2. En XP doble-click -> Siguiente -> marcar Tcl/Tk -> C:\Python34
+3. Copia compensador.py + compensador_gui.py JUNTOS a la misma carpeta.
+4. Doble-click compensador_gui.py -> Abrir con C:\Python34\pythonw.exe.
 
-PASO 1 - Descargar en Ubuntu y copiar al pendrive:
-  - Ve a https://www.python.org/downloads/release/python-344/
-  - Descarga:  Windows x86 MSI installer  ->  python-3.4.4.msi  (20 MB)
-  - Copialo al pendrive.
-
-PASO 2 - En el XP (sin internet):
-  - Inserta pendrive, doble-click en python-3.4.4.msi
-  - Siguiente -> Siguiente -> Deja marcada la opcion "Tcl/Tk"
-  - Se instalara en C:\Python34
-
-PASO 3 - Copiar programa al XP:
-  - Copia al XP (pendrive -> Escritorio o C:\CNC\) estos 2 archivos:
-        compensador.py
-        compensador_gui.py
-  - Dejalos JUNTOS en la misma carpeta. Muy importante.
-
-PASO 4 - Ejecutar:
-  - Doble-click en compensador_gui.py
-  - Si te pregunta "Abrir con", elige C:\Python34\pythonw.exe
-  - Marca "Usar siempre este programa" para que la proxima sea doble-click directo.
-  - Alternativa: click derecho -> Abrir con -> Python
-
-PASO 5 - Uso identico a Ubuntu (ver arriba).
-  El archivo _COMPENSADO.txt lo pasas de vuelta por pendrive si lo generaste en Ubuntu,
-  o lo generas directo en el XP y lo cargas en Mach3 en la misma maquina.
-
-NOTA: No necesitas copiar los example.txt al XP, son solo ejemplos.
+Uso idéntico a Ubuntu.
 
 -------------------------------------------------------------------
-C) CONSEJOS
+C) CONSEJOS GENERALES
 -------------------------------------------------------------------
-- Mide siempre con la misma herramienta montada que va a fresar.
-- Orden de puntos libre, pero intenta cubrir las 4 esquinas de la pieza.
-- Si el log dice "Error maximo >0.2mm", revisa medidas: pieza no plana o error de palpado.
-- Haz siempre prueba en aire en Mach3 antes de fresar.
-- Si G-code original tiene cabecera con ( X=... Z=... ) esa Z de comentario tambien se compensara ligeramente, es normal e inocuo.
+- Pon coordenadas 0 de la maquina reales y palpa siempre con la misma herramienta que fresara.
+- Intenta cubrir toda la superficie a mecanizar (esquinas y centro).
+- Si el log indica "Error máximo >0.2mm" revisa las mediciones.
+- Haz siempre una prueba en aire antes de fresar. Sube el eje Z 5 mm exactos (por ejemplo), confirma que ese es el nuevo punto 0 de Z y prueba. Después baja -5 mm, ajusta a 0 y mecaniza de verdad.
 
 -------------------------------------------------------------------
-D) POR QUE NO UN .EXE?
+AVISO LEGAL - USO BAJO TU RESPONSABILIDAD
 -------------------------------------------------------------------
-Soporte: los 2 archivos .py funcionan sin instalar nada mas en Ubuntu y XP.
+Este programa se proporciona "tal cual", sin garantía. El autor no se responsabiliza de ningún daño a maquina, pieza, herramienta ni de ningún daño personal derivado de su uso o del G-code generado. Eres el único responsable de verificar el archivo compensado y hacer prueba en aire (subir Z +5mm) antes de fresar. Usalo bajo tu propia responsabilidad.
