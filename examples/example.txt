@@ -1,0 +1,19 @@
+( example.gcode - generic test file for Mach3 G-Code Tilt Compensator v0.1 )
+( Create your own test file - this is just a placeholder rectangle )
+( Material Size X=100 Y=80 Z=10 )
+( Tool: End Mill 3mm )
+N10 G00 G21 G17 G90 G40 G49 G80
+N20 G71 G91.1
+N30 G00 G43 Z5.000 H1
+N40 S16000 M03
+N50 G94
+N60 G00 X10.000 Y10.000 Z5.000
+N70 G1 X10.000 Y10.000 Z-0.500 F300
+N80 G1 X90.000 Y10.000 Z-0.500 F800
+N90 G1 X90.000 Y70.000 Z-0.500
+N100 G1 X10.000 Y70.000 Z-0.500
+N110 G1 X10.000 Y10.000 Z-0.500
+N120 G00 Z5.000
+N130 G00 X0 Y0
+N140 M30
+%
